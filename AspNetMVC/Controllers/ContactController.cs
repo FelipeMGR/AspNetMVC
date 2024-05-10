@@ -18,9 +18,12 @@ namespace AspNetMVC.Controllers
             var contatos = _context.Contacts.ToList();
             return View(contatos);
         }
-
-
         public IActionResult About()
+        {
+            return View();
+        }
+
+        public IActionResult Create()
         {
             return View();
         }
