@@ -41,8 +41,6 @@ namespace AspNetMVC.Controllers
             }
             return View(contact);
         }
-
-        [HttpPut]
         public IActionResult Edit(int id)
         {
             var contact = _context.Contacts.Find(id);
@@ -53,6 +51,20 @@ namespace AspNetMVC.Controllers
             }
 
             return View(contact);
+        }
+
+        [HttpPut]
+        public IActionResult Edit(Contact contact)
+        {
+            var contactDB = _context.Contacts.Find(contact.Id);
+
+            contactDB.Name = contact.Name;
+            contactDB.PhoneNumber = contact.PhoneNumber;
+            contactDB.Active = contact.Active;
+            _context.Contacts.Update(contactDB);
+
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Contact));
         }
     }
 }
