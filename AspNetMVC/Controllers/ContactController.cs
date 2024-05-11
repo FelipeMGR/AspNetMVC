@@ -66,5 +66,39 @@ namespace AspNetMVC.Controllers
             _context.SaveChanges();
             return RedirectToAction(nameof(Contact));
         }
+
+        public IActionResult Details(int id)
+        {
+            var contact = _context.Contacts.Find(id);
+            if (contact is null)
+                return RedirectToAction(nameof(Contact));
+            return View(contact);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var contact = _context.Contacts.Find(id);
+            if (contact is null)
+                return RedirectToAction(nameof(Contact));
+
+            return View(contact);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Contact contact)
+        {
+            var contactDeleted = _context.Contacts.Find(contact.Id);
+
+            if (contactDeleted is null)
+                return RedirectToAction(nameof(Contact));
+
+            contactDeleted.Name = contact.Name;
+            contactDeleted.PhoneNumber = contact.PhoneNumber;
+            contactDeleted.Active = contact.Active;
+
+            _context.Contacts.Remove(contactDeleted);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Contact));
+        }
     }
 }
