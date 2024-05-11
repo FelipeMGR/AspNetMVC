@@ -37,7 +37,7 @@
                     @Html.DisplayFor(models => item.Id)
                 </td>
                 <td>
-                    @Html.DisplayFor(models => item.Id)
+                    @Html.DisplayFor(models => item.Name)
                 </td>
                 <td>
                     @Html.DisplayFor(models => item.PhoneNumber)
@@ -46,9 +46,9 @@
                     @Html.DisplayFor(models => item.Active)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="item.id">Editar</a> |
-                    <a asp-action="Details" asp-route-id="item.id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="item.id">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
         }

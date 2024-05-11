@@ -47,13 +47,13 @@ namespace AspNetMVC.Controllers
 
             if (contact is null)
             {
-                return NotFound("The id does not exist.");
+                return RedirectToAction(nameof(Contact));
             }
 
             return View(contact);
         }
 
-        [HttpPut]
+        [HttpPost]
         public IActionResult Edit(Contact contact)
         {
             var contactDB = _context.Contacts.Find(contact.Id);
@@ -61,8 +61,8 @@ namespace AspNetMVC.Controllers
             contactDB.Name = contact.Name;
             contactDB.PhoneNumber = contact.PhoneNumber;
             contactDB.Active = contact.Active;
-            _context.Contacts.Update(contactDB);
 
+            _context.Contacts.Update(contactDB);
             _context.SaveChanges();
             return RedirectToAction(nameof(Contact));
         }
