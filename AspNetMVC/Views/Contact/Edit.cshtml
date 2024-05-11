@@ -1,18 +1,18 @@
-﻿@model AspNetMVC.Models.Contact 
+﻿@model AspNetMVC.Models.Contact
 @{
-    ViewData["Title"] = "Create New Contact";
+    ViewData["Title"] = "Edit New Contact";
 }
 
-<h1>Contact Creation</h1>
+<h1>Contact Edition</h1>
 
-<hr/>
+<hr />
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Edit">
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control"/>
+                <input asp-for="Name" class="form-control" />
             </div>
             <br />
             <div class="form-group">
@@ -22,17 +22,17 @@
             <br />
             <div class="form-group">
                 <label asp-for="Active" class="control-label"></label>
-                <input type="checkbox" asp-for="Active" class="form-check-input"/>
+                <input type="checkbox" asp-for="Active" class="form-check-input" />
             </div>
-            <br/>
+            <br />
 
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary"/>
+                <input type="submit" value="Edit" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
-<hr/>
+<hr />
 
 <div>
     <a asp-action="About">Go back</a>
